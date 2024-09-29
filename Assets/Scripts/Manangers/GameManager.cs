@@ -6,11 +6,11 @@ public class GameManager : MonoBehaviour
 {
     static GameManager _ins = null;
 
-    UIManager _ui = new UIManager();
+    //UIManager _ui = new UIManager();
 
     //프로퍼티
     public static GameManager Instance { get { Init(); return _ins; } }
-    public static UIManager UI { get { return Instance._ui; } }
+    //public static UIManager UI { get { return Instance._ui; } }
 
     private void Start()
     {
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        UI.Update();
+        //UI.Update();
     }
 
     static void Init()

@@ -7,33 +7,28 @@ public class UIButtonController : MonoBehaviour
     [SerializeField] GameObject InteractionObj;
 
     UnityEngine.UI.Button _button;
-
-    public static int SortOrderValue = 100;
     // Start is called before the first frame update
     void Start()
     {
-        if (this.gameObject.name != "CloseButton")
-        {
-            GameManager.UI.AddPopWindow(this.gameObject.name, InteractionObj);
-        }
-
         _button = GetComponent<UnityEngine.UI.Button>();
 
         _button.onClick.AddListener(ButtonClick);
     }
     public void ButtonClick()
     {
-        if (this.gameObject.name == "CloseButton")
+        if (this.gameObject.name.Equals("CloseButton"))
         {
+            //닫는 버튼은 부모 오브젝트 비활성화
             this.transform.parent.gameObject.SetActive(false);
             return;
         }
+
         if (InteractionObj == null)
         {
-            Debug.Log($"{this.gameObject.name}에 상호작용 설정 필요");
+            Debug.Log($"{this.gameObject.name}에 오브젝트 연결 필요");
             return;
         }
 
-        GameManager.UI.PushButton(this.gameObject.name);
+        InteractionObj.SetActive(true);
     }
 }
