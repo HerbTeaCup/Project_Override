@@ -41,7 +41,7 @@ public class UIManager
             OpenUp(key);
         }
     }
-    void OpenUp(string key)
+    public void OpenUp(string key)
     {
         //창을 여는 메소드
 
@@ -68,7 +68,7 @@ public class UIManager
         //창을 닫는 것도 필요하므로 stack에 Push
         UiStack.Push(window);
     }
-    void Close(string key)
+    public void Close(string key)
     {
         //창을 닫는 메소드
         //key 값에 해당하는 오브젝트만 닫음

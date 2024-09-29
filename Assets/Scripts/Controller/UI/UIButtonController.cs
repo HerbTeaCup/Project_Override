@@ -12,14 +12,22 @@ public class UIButtonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _button = GetComponent<UnityEngine.UI.Button>();
+        if (this.gameObject.name != "CloseButton")
+        {
+            GameManager.UI.AddPopWindow(this.gameObject.name, InteractionObj);
+        }
 
-        GameManager.UI.AddPopWindow(this.gameObject.name, InteractionObj);
+        _button = GetComponent<UnityEngine.UI.Button>();
 
         _button.onClick.AddListener(ButtonClick);
     }
     public void ButtonClick()
     {
+        if (this.gameObject.name == "CloseButton")
+        {
+            this.transform.parent.gameObject.SetActive(false);
+            return;
+        }
         if (InteractionObj == null)
         {
             Debug.Log($"{this.gameObject.name}에 상호작용 설정 필요");
