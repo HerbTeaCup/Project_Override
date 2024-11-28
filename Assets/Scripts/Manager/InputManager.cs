@@ -14,7 +14,7 @@ public class InputManager
     public bool jump { get; private set; }
     public bool weaponChange1 { get; private set; }
     public bool weaponChange2 { get; private set; }
-    public bool[] skills { get; private set; }
+    public bool[] skills { get; private set; } = new bool[4];
 
     public bool dash { get; private set; }
     public bool Genius { get; private set; }
@@ -34,17 +34,18 @@ public class InputManager
     void MovementInput()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
-            horizontal += -1f;
-        if (Input.GetKey(KeyCode.RightArrow))
-            horizontal += 1f;
+            horizontal = -1f;
+        else if (Input.GetKey(KeyCode.RightArrow))
+            horizontal = 1f;
+        else
+            horizontal = 0f;
 
         if (Input.GetKey(KeyCode.UpArrow))
-            vertical += 1f;
-        if (Input.GetKey(KeyCode.DownArrow))
-            vertical += -1f;
-
-        horizontal = Mathf.Clamp(horizontal, -1f, 1f);
-        vertical = Mathf.Clamp(vertical, -1f, 1f);
+            vertical = 1f;
+        else if (Input.GetKey(KeyCode.DownArrow))
+            vertical = -1f;
+        else
+            vertical = 0f;
     }
 
     void TriggerInput()
